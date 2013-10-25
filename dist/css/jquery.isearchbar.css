@@ -1,0 +1,36 @@
+/*
+ *  iSearchbar - v0.0.1
+ *  An iOS7-style searchbar plugin for jQuery
+ *  https://github.com/allenan/isearchbar
+ *
+ *  Made by Andrew Allen
+ *  Under MIT License
+ */
+
+@font-face { font-family: 'isearchbar'; src: url("fonts/isearchbar.eot"); }
+
+@font-face { font-family: 'isearchbar'; src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg6v80wAAAC8AAAAYGNtYXDMNRp7AAABHAAAADxnYXNwAAAAEAAAAVgAAAAIZ2x5ZiSaDkQAAAFgAAAAqGhlYWT/mokaAAACCAAAADZoaGVhByMD9AAAAkAAAAAkaG10eAWRAEMAAAJkAAAADGxvY2EACgBUAAACcAAAAAhtYXhwAAcANQAAAngAAAAgbmFtZVBd+tYAAAKYAAABVHBvc3QAAwAAAAAD7AAAACAAAwQAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACDmIgPA/8D/wAPAAEAAAAAAAAAAAAAAAAAAAAAgAAAAAAACAAAAAwAAABQAAwABAAAAFAAEACgAAAAGAAQAAQACACDmIv//AAAAIOYi////4RngAAEAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAMAQwAyA2EDUQAcADEAMgAAARc3Jz4DNTQuAiMiDgIVFB4CMzI+AjclND4CMzIeAhUUDgIjIi4CNTECUeEv4REbEwozWHZDQ3ZYMzNYdkMdNzMvFf4eLExlOjplTCwsTGU6OmVMLAET4S/hFS8zNx1DdlgzM1h2Q0N2WDMKExsR+zplTCwsTGU6OmVMLCxMZToAAAABAAAAAQAAhbbWH18PPPUACwQAAAAAAM6NomYAAAAAzo2iZgAAAAADYQNRAAAACAACAAAAAAAAAAEAAAPA/8AAAAQAAAAAMANhAAEAAAAAAAAAAAAAAAAAAAADAAAAAAIAAAADkQBDAAAAAAAKAFQAAQAAAAMAMwADAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA4ArgABAAAAAAABABQAAAABAAAAAAACAA4AXAABAAAAAAADABQAKgABAAAAAAAEABQAagABAAAAAAAFABYAFAABAAAAAAAGAAoAPgABAAAAAAAKACgAfgADAAEECQABABQAAAADAAEECQACAA4AXAADAAEECQADABQAKgADAAEECQAEABQAagADAAEECQAFABYAFAADAAEECQAGABQASAADAAEECQAKACgAfgBpAHMAZQBhAHIAYwBoAGIAYQByAFYAZQByAHMAaQBvAG4AIAAwAC4AMABpAHMAZQBhAHIAYwBoAGIAYQByaXNlYXJjaGJhcgBpAHMAZQBhAHIAYwBoAGIAYQByAFIAZQBnAHUAbABhAHIAaQBzAGUAYQByAGMAaABiAGEAcgBHAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAEkAYwBvAE0AbwBvAG4AAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==) format("truetype"), url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAARYAAsAAAAABAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABCAAAAGAAAABgDq/zTGNtYXAAAAFoAAAAPAAAADzMNRp7Z2FzcAAAAaQAAAAIAAAACAAAABBnbHlmAAABrAAAAKgAAACoJJoORGhlYWQAAAJUAAAANgAAADb/mokaaGhlYQAAAowAAAAkAAAAJAcjA/RobXR4AAACsAAAAAwAAAAMBZEAQ2xvY2EAAAK8AAAACAAAAAgACgBUbWF4cAAAAsQAAAAgAAAAIAAHADVuYW1lAAAC5AAAAVQAAAFUUF361nBvc3QAAAQ4AAAAIAAAACAAAwAAAAMEAAGQAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAg5iIDwP/A/8ADwABAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAMAAAAUAAMAAQAAABQABAAoAAAABgAEAAEAAgAg5iL//wAAACDmIv///+EZ4AABAAAAAAAAAAEAAf//AA8AAQAAAAAAAAAAAAIAADc5AQAAAAADAEMAMgNhA1EAHAAxADIAAAEXNyc+AzU0LgIjIg4CFRQeAjMyPgI3JTQ+AjMyHgIVFA4CIyIuAjUxAlHhL+ERGxMKM1h2Q0N2WDMzWHZDHTczLxX+HixMZTo6ZUwsLExlOjplTCwBE+Ev4RUvMzcdQ3ZYMzNYdkNDdlgzChMbEfs6ZUwsLExlOjplTCwsTGU6AAAAAQAAAAEAAIW21h9fDzz1AAsEAAAAAADOjaJmAAAAAM6NomYAAAAAA2EDUQAAAAgAAgAAAAAAAAABAAADwP/AAAAEAAAAADADYQABAAAAAAAAAAAAAAAAAAAAAwAAAAACAAAAA5EAQwAAAAAACgBUAAEAAAADADMAAwAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAUAAAAAQAAAAAAAgAOAFwAAQAAAAAAAwAUACoAAQAAAAAABAAUAGoAAQAAAAAABQAWABQAAQAAAAAABgAKAD4AAQAAAAAACgAoAH4AAwABBAkAAQAUAAAAAwABBAkAAgAOAFwAAwABBAkAAwAUACoAAwABBAkABAAUAGoAAwABBAkABQAWABQAAwABBAkABgAUAEgAAwABBAkACgAoAH4AaQBzAGUAYQByAGMAaABiAGEAcgBWAGUAcgBzAGkAbwBuACAAMAAuADAAaQBzAGUAYQByAGMAaABiAGEAcmlzZWFyY2hiYXIAaQBzAGUAYQByAGMAaABiAGEAcgBSAGUAZwB1AGwAYQByAGkAcwBlAGEAcgBjAGgAYgBhAHIARwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=) format("woff"); font-weight: normal; font-style: normal; }
+
+[class*="isb-icon-"] { font-family: 'isearchbar'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; /* Enable Ligatures ================ */ -webkit-font-feature-settings: "liga"; -moz-font-feature-settings: "liga=1"; -moz-font-feature-settings: "liga"; -ms-font-feature-settings: "liga" 1; -o-font-feature-settings: "liga"; font-feature-settings: "liga"; /* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.isb-icon-search:before { content: "\e622"; }
+
+.isearchbar-container { position: relative; }
+.isearchbar-container .isearchbar-cancel { display: none; color: #0075ff; text-decoration: none; }
+.isearchbar-container .isearchbar-input-wrapper { width: 96%; border-radius: 4px; margin: 5px 0; margin-left: 2%; background-color: white; display: inline-block; text-align: center; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar { outline: none; border: 0; background: none; width: 100%; font-size: 12px; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar::-webkit-input-placeholder { color: #a3a3a3; font-weight: 100; text-align: center; font-size: 12px; padding-top: 2px; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar::-webkit-input-placeholder:before { content: "\e622"; font-family: "isearchbar"; margin-right: 6px; font-size: 12px; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar:-moz-placeholder { color: #a3a3a3; font-weight: 100; text-align: center; font-size: 12px; padding-top: 2px; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar:-moz-placeholder:before { content: "\e622"; font-family: "isearchbar"; margin-right: 6px; font-size: 12px; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar::-moz-placeholder { color: #a3a3a3; font-weight: 100; text-align: center; font-size: 12px; padding-top: 2px; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar::-moz-placeholder:before { content: "\e622"; font-family: "isearchbar"; margin-right: 6px; font-size: 12px; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar:-ms-input-placeholder { color: #a3a3a3; font-weight: 100; text-align: center; font-size: 12px; padding-top: 2px; }
+.isearchbar-container .isearchbar-input-wrapper input.isearchbar:-ms-input-placeholder:before { content: "\e622"; font-family: "isearchbar"; margin-right: 6px; font-size: 12px; }
+.isearchbar-container.isearchbar-focus .isearchbar-input-wrapper { width: 72%; text-align: left; }
+.isearchbar-container.isearchbar-focus .isearchbar-icon { display: inline-block; width: 20px; height: 20px; margin-left: 4px; font-size: 12px; }
+.isearchbar-container.isearchbar-focus .isearchbar-icon:before { color: #a3a3a3; content: "\e622"; font-family: "isearchbar"; font-size: 12px; padding-top: 2px; }
+.isearchbar-container.isearchbar-focus input.isearchbar { width: auto; }
+.isearchbar-container.isearchbar-focus input.isearchbar::-webkit-input-placeholder { color: #a3a3a3; font-weight: 100; text-align: left; font-size: 12px; padding-top: 2px; }
+.isearchbar-container.isearchbar-focus input.isearchbar::-webkit-input-placeholder:before { content: ""; }
+.isearchbar-container.isearchbar-focus .isearchbar-cancel { display: inline; margin-left: 14px; }

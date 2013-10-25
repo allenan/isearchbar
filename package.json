@@ -1,0 +1,23 @@
+{
+	"name": "isearchbar",
+	"title": "iSearchbar",
+	"description": "An iOS7-style searchbar plugin for jQuery",
+	"author": "Andrew Allen",
+	"homepage": "https://github.com/allenan/isearchbar",
+	"version": "3.3.1",
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-cli": "~0.1.7",
+		"grunt-contrib-jshint": "~0.4.3",
+		"grunt-contrib-concat": "~0.3.0",
+		"grunt-contrib-uglify": "~0.2.0",
+		"grunt-contrib-coffee": "~0.7.0",
+		"grunt-contrib-sass": "~0.5.0",
+		"grunt-contrib-cssmin": "~0.6.2",
+		"grunt-banner": "~0.2.0",
+		"grunt-coffeelint": "~0.0.7"
+	},
+	"scripts": {
+		"test": "grunt travis --verbose"
+	}
+}

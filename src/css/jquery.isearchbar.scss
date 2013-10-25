@@ -1,0 +1,92 @@
+@import 'colors';
+@import 'font';
+@import 'mixins';
+
+.isearchbar-container{
+  position: relative;
+  // width: 400px;
+
+  .isearchbar-cancel{
+    display: none;
+    color: $blue;
+    text-decoration: none;
+  }
+
+  .isearchbar-input-wrapper{
+    width: 96%;
+    border-radius: 4px;
+    margin: 5px 0;
+    margin-left: 2%;
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+
+    input.isearchbar{
+      outline: none;
+      border: 0;
+      background: none;
+      width: 100%;
+      font-size: 12px;
+
+      @include input-placeholder {
+        color: $gray;
+        font-weight: 100;
+        text-align: center;
+        font-size: 12px;
+        padding-top: 2px;
+
+        &:before {
+          content: "\e622";
+          font-family: "isearchbar";
+          margin-right: 6px;
+          font-size: 12px;
+        } 
+      }
+    }
+  }
+  
+
+  &.isearchbar-focus{
+    .isearchbar-input-wrapper{
+      width: 72%;
+      text-align: left;
+    }
+    
+    .isearchbar-icon{
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-left: 4px;
+      font-size: 12px;
+
+      &:before {
+        color: $gray;
+        content: "\e622";
+        font-family: "isearchbar";
+        font-size: 12px;
+        padding-top: 2px;
+      }
+    }
+    
+    input.isearchbar{
+      width: auto;
+
+      &::-webkit-input-placeholder {
+        color: $gray;
+        font-weight: 100;
+        text-align: left;
+        font-size: 12px;
+        padding-top: 2px;
+
+        &:before {
+          content: "";
+        } 
+      }
+    }
+
+    .isearchbar-cancel{
+      display: inline;
+      margin-left: 14px;
+    } 
+  }
+}

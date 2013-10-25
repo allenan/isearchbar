@@ -1,0 +1,35 @@
+{
+	"name": "isearchbar",
+	"title": "iSearchbar",
+	"description": "An iOS7-style searchbar plugin for jQuery",
+	"keywords": [
+		"jquery",
+		"plugins"
+	],
+	"version": "0.0.1",
+	"author": {
+		"name": "Andrew Allen",
+		"email": "andrewallen2012@gmail.com",
+		"url": "https://github.com/allenan"
+	},
+	"maintainers": [
+		{
+			"name": "Andrew Allen",
+			"email": "andrewallen2012@gmail.com",
+			"url": "https://github.com/allenan"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://mit-license.org/"
+		}
+	],
+	"bugs": "https://github.com/jquery-boilerplate/boilerplate/issues",
+	"homepage": "https://github.com/allenan/isearchbar",
+	"docs": "https://github.com/allenan/isearchbar#readme",
+	"download": "https://github.com/allenan/isearchbar/archive/master.zip",
+	"dependencies": {
+		"jquery": ">=1.4"
+	}
+}
