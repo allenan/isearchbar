@@ -32,18 +32,16 @@
       };
 
       ISearchbar.prototype.setupHtmlStructure = function() {
-        var $inputWrapper, inputWrapper;
+        var $inputWrapper, inputWrapper, root;
         this.$input.attr("placeholder", this.options.placeholderText);
         this.$input.wrap("<div class='isearchbar-container'></div>");
         this.$input.wrap("<div class='isearchbar-input-wrapper'></div>");
         inputWrapper = $(".isearchbar-input-wrapper");
         $inputWrapper = $(inputWrapper);
+        root = $(".isearchbar-container");
+        this.$root = $(root);
         $inputWrapper.prepend(this.createIconSpan());
-        return this.root.append(this.createCancelButton());
-      };
-
-      ISearchbar.prototype.root = function() {
-        return this.$root != null ? this.$root : this.$root = $(".isearchbar-container");
+        return this.$root.append(this.createCancelButton());
       };
 
       ISearchbar.prototype.createCancelButton = function() {
@@ -57,16 +55,16 @@
       ISearchbar.prototype.setListeners = function() {
         var _this = this;
         this.$input.on("focus", function(event) {
-          return _this.root.addClass("isearchbar-focus");
+          return _this.$root.addClass("isearchbar-focus");
         });
         this.$input.on("blur", function() {
           if (_this.$input.val() === "") {
-            return _this.root.removeClass("isearchbar-focus");
+            return _this.$root.removeClass("isearchbar-focus");
           }
         });
-        return this.root.on("click", ".isearchbar-cancel", function(event) {
+        return this.$root.on("click", ".isearchbar-cancel", function(event) {
           event.preventDefault();
-          _this.root.removeClass("isearchbar-focus");
+          _this.$root.removeClass("isearchbar-focus");
           return _this.$input.val("");
         });
       };
